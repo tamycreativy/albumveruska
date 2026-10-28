@@ -184,19 +184,19 @@ body{padding:0;background:#12060a}
    <div class="nums"><div><b id="sn">0</b><span>postagens</span></div><div><b id="sl">0</b><span>amei</span></div><div><b id="sc">0</b><span>convidados</span></div></div></div>
   <h1>Veruska</h1>
   <p class="sub">Aniversário · 50 anos</p>
-  <p class="bio">Uma noite através do tempo ✨<br>70 · 80 · 90 · 2000<br>Poste suas fotos e vídeos da festa!</p>
+  <p class="bio">Uma noite através do tempo ✨<br>70 · 80 · 90 · 2000<br>Poste suas fotos da festa!</p>
   <button class="postar" id="novo2" type="button">＋ Postar no álbum</button>
 </header>
 <div class="tabs"><span aria-label="Postagens">▦</span></div>
 <main id="feed"></main>
 
 
-<div class="rod"><p style="margin:0 0 6px;font-size:13px;color:#8d86a0">álbum de fotos e vídeos dos convidados</p><button id="modo">ver como aniversariante</button></div>
+<div class="rod"><p style="margin:0 0 6px;font-size:13px;color:#8d86a0">álbum de fotos dos convidados</p><button id="modo">ver como aniversariante</button></div>
 </div>
 </div>
 </div>
 <div class="det" id="det" hidden role="dialog" aria-modal="true" aria-label="Foto aberta"></div>
-<button class="fab" id="novo" aria-label="Postar uma foto ou vídeo">＋ Postar</button></div>
+<button class="fab" id="novo" aria-label="Postar uma foto">＋ Postar</button></div>
 
 <div class="veu" id="veu" hidden>
   <form class="folha" id="form" aria-labelledby="ft">
@@ -209,13 +209,11 @@ body{padding:0;background:#12060a}
     </div>
     <div class="botoes">
       <label class="btn sec2 peq" for="arq">Galeria</label>
-      <label class="btn sec2 peq" for="camv">Gravar vídeo</label>
       <button type="button" id="disp" class="obt" aria-label="Tirar foto"></button>
       <button type="button" class="btn sec2 peq" id="vira">Virar</button>
     </div>
     <input type="file" id="cam" accept="image/*" capture="user" hidden>
-    <input type="file" id="arq" accept="image/*,video/*" hidden>
-    <input type="file" id="camv" accept="video/*" capture="environment" hidden>
+    <input type="file" id="arq" accept="image/*" hidden>
     <div class="campo" id="chips-box"><span>Escolha a sua moldura</span>
       <div class="chips" id="fchips">
         <button type="button" class="chip" data-f="0" aria-pressed="true">Sem moldura</button>
@@ -424,7 +422,7 @@ function escolheu(inp){
   var im=new Image();im.onload=function(){try{mostra(im)}catch(er){falha()}};
   im.onerror=function(){if(window.createImageBitmap){createImageBitmap(f).then(function(bm){var c=document.createElement('canvas');c.width=bm.width;c.height=bm.height;c.getContext('2d').drawImage(bm,0,0);mostra(c)}).catch(falha)}else falha()};
   im.src=url}
-$('arq').onchange=function(){escolheu(this);this.value=''};$('cam').onchange=function(){escolheu(this);this.value=''};$('camv').onchange=function(){escolheu(this);this.value=''};
+$('arq').onchange=function(){escolheu(this);this.value=''};$('cam').onchange=function(){escolheu(this);this.value=''};
 $('fchips').addEventListener('click',function(e){var b=e.target.closest('.chip');if(!b)return;filtro=b.dataset.f;
   [].forEach.call($('fchips').children,function(x){x.setAttribute('aria-pressed',x===b)});if(raw)desenhaFixa();vai()});
 var enviando=false;
