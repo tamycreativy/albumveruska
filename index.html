@@ -209,11 +209,13 @@ body{padding:0;background:#12060a}
     </div>
     <div class="botoes">
       <label class="btn sec2 peq" for="arq">Galeria</label>
+      <label class="btn sec2 peq" for="camv">Gravar vídeo</label>
       <button type="button" id="disp" class="obt" aria-label="Tirar foto"></button>
       <button type="button" class="btn sec2 peq" id="vira">Virar</button>
     </div>
     <input type="file" id="cam" accept="image/*" capture="user" hidden>
     <input type="file" id="arq" accept="image/*,video/*" hidden>
+    <input type="file" id="camv" accept="video/*" capture="environment" hidden>
     <div class="campo" id="chips-box"><span>Escolha a sua moldura</span>
       <div class="chips" id="fchips">
         <button type="button" class="chip" data-f="0" aria-pressed="true">Sem moldura</button>
@@ -422,7 +424,7 @@ function escolheu(inp){
   var im=new Image();im.onload=function(){try{mostra(im)}catch(er){falha()}};
   im.onerror=function(){if(window.createImageBitmap){createImageBitmap(f).then(function(bm){var c=document.createElement('canvas');c.width=bm.width;c.height=bm.height;c.getContext('2d').drawImage(bm,0,0);mostra(c)}).catch(falha)}else falha()};
   im.src=url}
-$('arq').onchange=function(){escolheu(this);this.value=''};$('cam').onchange=function(){escolheu(this);this.value=''};
+$('arq').onchange=function(){escolheu(this);this.value=''};$('cam').onchange=function(){escolheu(this);this.value=''};$('camv').onchange=function(){escolheu(this);this.value=''};
 $('fchips').addEventListener('click',function(e){var b=e.target.closest('.chip');if(!b)return;filtro=b.dataset.f;
   [].forEach.call($('fchips').children,function(x){x.setAttribute('aria-pressed',x===b)});if(raw)desenhaFixa();vai()});
 var enviando=false;
